@@ -1,3 +1,4 @@
+import { GameListComponent } from './components/game-list/game-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,16 +16,12 @@ import { GamesService } from './services/games.service';
   declarations: [
     AppComponent,
     NavigationComponent,
-    GameFormComponent
-
+    GameFormComponent,
+    GameListComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  exports: [GameListComponent],
   providers: [GamesService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

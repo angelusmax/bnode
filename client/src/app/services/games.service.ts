@@ -18,12 +18,12 @@ export class GamesService {
 
   //obtiene un solo juego
   getGame(id: string) {
-    return this.http.get(`${this.API_URI}/games/${id}`);
+    return this.http.get('${this.API_URI}/games/${id}');
   }
 
   //elimina un juego
   deleteGame(id: string) {
-    return this.http.delete(`${this.API_URI}/games/${id}`);
+    return this.http.delete('${this.API_URI}/games/${id}');
   }
 
   //añade un juego
@@ -33,6 +33,6 @@ export class GamesService {
 
   //actualiza un juego
   updateGame(id: string | number, updatedGame: Game): Observable<Game> {
-    return this.http.put(`${this.API_URI}/games/${id}`, updatedGame);
+    return this.http.put('${this.API_URI}/games/${id}', updatedGame);
   }
 }
