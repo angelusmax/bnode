@@ -7,38 +7,38 @@ import { GamesService } from '../../services/games.service';
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.css'],
 })
-export class GamesListComponent implements OnInit {
-
+export class GameListComponent implements OnInit {
   @HostBinding('class') classes = 'row';
 
   games: any = [];
 
-  constructor(private gameService: GamesService) { }
-
+  constructor(private gameService: GamesService) {}
 
   ngOnInit() {
-    this.getGames();
+    this.gameService.getGames().subscribe(
+      (res) => {
+        this.games = res;
+      },
+      (err) => console.log(err)
+    );
   }
 
   getGames() {
-    this.gameService.getGames()
-      .subscribe(
-        res => {
-          this.games = res;
-        },
-        err => console.error(err)
-      );
+    this.gameService.getGames().subscribe(
+      (res) => {
+        this.games = res;
+      },
+      (err) => console.error(err)
+    );
   }
 
   deleteGame(id: string) {
-    this.gameService.deleteGame(id)
-      .subscribe(
-        res => {
-          console.log(res);
-          this.getGames();
-        },
-        err => console.error(err)
-      )
+    this.gameService.deleteGame(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.getGames();
+      },
+      (err) => console.error(err)
+    );
   }
-
 }

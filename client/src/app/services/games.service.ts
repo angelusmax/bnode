@@ -4,13 +4,12 @@ import { Game } from '../models/Game';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GamesService {
-
   API_URI = 'http://localhost:3000/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //captura los nuevos juegos
   getGames() {
@@ -29,12 +28,11 @@ export class GamesService {
 
   //añade un juego
   saveGame(game: Game) {
-    return this.http.post(`${this.API_URI}/games`, game);
+    return this.http.post('${this.API_URI}/games', game);
   }
 
   //actualiza un juego
-  updateGame(id: string|number, updatedGame: Game): Observable<Game> {
+  updateGame(id: string | number, updatedGame: Game): Observable<Game> {
     return this.http.put(`${this.API_URI}/games/${id}`, updatedGame);
   }
-
 }

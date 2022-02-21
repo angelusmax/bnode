@@ -15,19 +15,19 @@ class Server {
         this.routes();
     }
     config() {
-        this.app.set('port', process.env.PORT || 3000);
-        this.app.use((0, morgan_1.default)('putas'));
+        this.app.set("port", process.env.PORT || 3000);
+        this.app.use((0, morgan_1.default)(""));
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     routes() {
-        this.app.use('/', indexRoutes_1.default);
-        this.app.use('/api/games', gamesRoutes_1.default);
+        this.app.use("/", indexRoutes_1.default);
+        this.app.use("/api/games", gamesRoutes_1.default);
     }
     start() {
-        this.app.listen(this.app.get('port'), () => {
-            console.log('server on port', this.app.get('port'));
+        this.app.listen(this.app.get("port"), () => {
+            console.log("server on port", this.app.get("port"));
         });
     }
 }
